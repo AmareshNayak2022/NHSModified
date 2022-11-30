@@ -8,6 +8,7 @@ Feature: NHSBSA health treatment check for various combinations for country Engl
     And user selects GPPractice yes clicks Next
     And user selects dental practice country England clicks Next
     And user enter valid "<Day>" and "<Month>" and  "<Year>" in Date of Birth clicks Next
+    
     And user enters livein partner Yes and clicks Next
     And user selects benefits Yes and Clicks Next
     And user selects universal credit Yes and clicks Next
@@ -17,3 +18,6 @@ Feature: NHSBSA health treatment check for various combinations for country Engl
     And close Browserafter
     
   
+  Examples:
+    |Day|Month|Year|
+    |06|12|1987|

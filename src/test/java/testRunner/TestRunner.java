@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions
               (
-            	features=".//Features/countryEnglandNHS.feature",
+            	features=".//Features",
             	glue="stepDefinitions",
             	dryRun = false,
             	monochrome = true,

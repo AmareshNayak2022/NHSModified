@@ -5,15 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CountryLivingSelectionPage {
+
+
+public class Page3_DentalPracticeCountryPage {
 	
-	public WebDriver ldriver;
+public WebDriver ldriver;
 	
-	public CountryLivingSelectionPage(WebDriver rdriver) {
+	public Page3_DentalPracticeCountryPage(WebDriver rdriver) {
 		ldriver = rdriver;
 		PageFactory.initElements(rdriver, this);
 	}
-	
 	
 	@FindBy(xpath="//input[@id='radio-england']")
 	static WebElement selectEngland;
@@ -21,11 +22,12 @@ public class CountryLivingSelectionPage {
 	static WebElement selectScotland;
 	@FindBy(xpath="//input[@id='radio-wales']")
 	static WebElement selectWales;
-	@FindBy(xpath="//input[@id='radio-nire']")
+	@FindBy(xpath="//input[@id='radio-ni']")
 	static WebElement selectNorthernIreland;
+	@FindBy(xpath="//input[@id='radio-not-registered']")
+	static WebElement clicknotRegistered;
 	@FindBy(xpath="//input[@id='next-button']")
 	static WebElement clickNext;
-	
 	
 	public static void selectEnglandcountry() {
 		selectEngland.click();
@@ -41,6 +43,10 @@ public class CountryLivingSelectionPage {
 	}
 	public static void selectNorthernIrelandcountry() {
 		selectNorthernIreland.click();
+		
+	}
+	public static void clickNotRegistered() {
+		clicknotRegistered.click();
 		
 	}
 	public static void clickNextbutton() {

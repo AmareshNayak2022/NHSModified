@@ -18,6 +18,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObjects.CountryLivingSelectionPage;
+import pageObjects.Page10_TakeHome935Page;
+import pageObjects.Page2_GPPracticeLocationYesNoPage;
+import pageObjects.Page3_DentalPracticeCountryPage;
+import pageObjects.Page4_dobEntryPage;
+import pageObjects.Page5_PartnerYesNoPage;
+import pageObjects.Page6_BenefitsTaxCreditsYesNoPage;
+import pageObjects.Page7_UniversalCreditPage;
+import pageObjects.Page8_ResponsePage;
 import utilities.AcceptCookies;
 import utilities.WaitHelper;
 
@@ -47,19 +56,25 @@ public class StepsEngland extends BaseClass {
 	
 	@And("user selects country England clicks Next")
 	public void user_select_country_England() throws InterruptedException {
-		System.out.println("Select Country England");
+		cls = new CountryLivingSelectionPage(driver);
+		cls.selectEnglandcountry();
+		cls.clickNextbutton();
 	 
 	    
 	}
 	@And("user selects GPPractice yes clicks Next")
 	public void user_selects_GPPracticeCountry_Yes() throws InterruptedException {
-		System.out.println("GPPractice Yes");
+		gp = new Page2_GPPracticeLocationYesNoPage(driver);
+		gp.selectGPPracticeYes();
+		gp.clickNextbutton();
 	   
 	    
 	}
 	@And("user selects dental practice country England clicks Next")
 	public void user_selects_DentalPractice_country_Yes() throws InterruptedException {
-		System.out.println("Dental Practice Yes");
+		dp = new Page3_DentalPracticeCountryPage(driver);
+		dp.selectEnglandcountry();
+		dp.clickNextbutton();
 	    
 	    
 	}
@@ -75,39 +90,53 @@ public class StepsEngland extends BaseClass {
 	}*/
 	@When("user enter valid {string} and {string} and  {string} in Date of Birth clicks Next")
 	public void user_enter_valid_and_and_in_date_of_birth_clicks_next(String Day, String Month	, String Year) throws InterruptedException {
-		System.out.println("DOB entered");
+		dob = new Page4_dobEntryPage(driver);
+		dob.enterDay(Day);
+		dob.enterMonth(Month);
+		dob.enterYear(Year);
+		dob.clickNext();
+		
+	   
 	   
 	   
 	}
 	@And("user enters livein partner Yes and clicks Next")
 	public void user_selects_liveinpartner_yes() throws InterruptedException {
-		System.out.println("Partner Yes");
+		pp = new Page5_PartnerYesNoPage(driver);
+		pp.partnerYes();
+		pp.clickNext();
 	    
 	    
 	}
 	@And("user selects benefits Yes and Clicks Next")
 	public void user_selects_benefits_yes() throws InterruptedException {
-		System.out.println("benefits Yes");
+		btc = new Page6_BenefitsTaxCreditsYesNoPage(driver);
+		btc.partnerYes();
+		btc.clickNext();
 	   
 	    
 	}
 	@And("user selects universal credit Yes and clicks Next")
 	public void user_selects_universalcredit_yes() throws InterruptedException {
-		System.out.println("universal credit Yes");
+		ucp = new Page7_UniversalCreditPage(driver);
+		ucp.yesUniversal();
+		ucp.clickNext();
 	   
 	    
 	}
 	@And("user selects response and clicks Next")
 	public void user_selects_response_yes() throws InterruptedException {
-		System.out.println("Response Yes");
+		rp = new Page8_ResponsePage(driver);
+		rp.responseYes();
+		rp.clickNext();
 	   
 	    
 	}
 	@And("user selects less than 935 pond and clicks Next")
 	public void user_selects_lessThanPound_yes() throws InterruptedException {
-		System.out.println("less than Pound Yes");
-
-	    
+		thp1 = new Page10_TakeHome935Page(driver);
+		thp1.takeHome935Yes();
+		thp1.clickNext();    
 	}
 	
 	
