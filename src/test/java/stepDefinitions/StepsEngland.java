@@ -6,6 +6,8 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -21,37 +23,11 @@ import utilities.WaitHelper;
 
 public class StepsEngland extends BaseClass {
 	
-/*	@Before
-	public void setup() throws IOException {
-		
-		logger = Logger.getLogger("NHSBSACucumberBDDFinal");
-		PropertyConfigurator.configure("log4j.properties");
-		
-		configProp = new Properties();
-		FileInputStream configPropfile = new FileInputStream("config.properties");
-		configProp.load(configPropfile);
-		
-		
-		
-		String Browser = configProp.getProperty("browser");
-		if(Browser.equals("chrome")) {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		}
-		else if(Browser.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			
-		}
-		
-		logger.info("*****Launching Browser****");
-		driver.get("https://services.nhsbsa.nhs.uk/check-for-help-paying-nhs-costs/start");
-		logger.info("*****Launching URL****");
-		driver.manage().window().maximize();
-	}*/
 	
-	@Given("User launches browser and enters urlengland")
-	public void user_launches_browser_and_enters_urlengland() throws InterruptedException {
+	
+	@Given("user is on StartPage")
+	public void user_is_on_startPage() throws InterruptedException {
+		
 		sp = new pageObjects.StartPage(driver);
 	    wait = new WaitHelper(driver);
 	    ac = new AcceptCookies(driver);
@@ -61,8 +37,8 @@ public class StepsEngland extends BaseClass {
 
 	@When("user clicks on StartNow buttonengland")
 	public void user_clicks_on_start_now_buttonengland() throws InterruptedException {
-		
-		sp.clickStartNowbutton();
+		driver.findElement(By.xpath("//input[@id='next-button']")).click();
+		//sp.clickStartNowbutton();
 	    System.out.println("User landed country selection page");
 	    Thread.sleep(9000);
 	    ac.AcceptCookiesinthepage();
@@ -139,8 +115,13 @@ public class StepsEngland extends BaseClass {
 	@Then("user lands on NHSBSA help Page")
 	public void user_lands_on_NHSBSA_help_Page() throws InterruptedException {
 		System.out.println("Landed");
+	        
 	    
-	    
+	}
+	
+	@And("close Browserafter")
+	public void close_browser() {
+		driver.close();
 	    
 	}
 

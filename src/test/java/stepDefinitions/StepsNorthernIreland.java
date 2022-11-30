@@ -37,18 +37,13 @@ public class StepsNorthernIreland extends BaseClass {
 		
 		
 		String Browser = configProp.getProperty("browser");
-		
-		if(Browser.equals("chrome")) 
-		{
-		    WebDriverManager.chromedriver().setup();
-		    driver = new ChromeDriver();
-		    
+		if(Browser.equals("chrome")) {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
 		}
-		else if(Browser.equals("firefox")) 
-		{
+		else if(Browser.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-		
 			
 		}
 		
@@ -57,11 +52,9 @@ public class StepsNorthernIreland extends BaseClass {
 		logger.info("*****Launching URL****");
 		driver.manage().window().maximize();
 	}
-	
-	@Given("user is on the startpage")
-	public void user_onStartPage() {
 		
-	
+	@Given("user is on the startpage")
+	public void user_onStartPage() {	
 	    sp = new StartPage(driver);
 	    wait = new WaitHelper(driver);
 	    ac = new AcceptCookies(driver);
@@ -108,6 +101,40 @@ public class StepsNorthernIreland extends BaseClass {
 	    
 	}
 	
+	
+//------------------2nd scenario---------------
+	
 
+
+	@When("user selects country NorthernIreland2")
+	public void user_selects_country_northern_ireland2() {
+		cls = new CountryLivingSelectionPage(driver);
+		cls.selectNorthernIrelandcountry();
+		wait.implicitwait();
+	   
+	}
+
+	@When("user clicks Next button2")
+	public void user_clicks_next_button2() {
+		cls.clickNextbutton();
+		wait.implicitwait();
+	
+	}
+
+	@SuppressWarnings("deprecation")
+	@Then("user checks the other treatment helpnorthernireland2")
+	public void user_checks_the_other_treatment_helpnorthernireland2() {
+		fh = new FinalNHSHelpPage(driver);
+		String ExpectedResult = fh.mainHelpTextshow();
+		Assert.assertEquals(ExpectedResult, "You cannot use this service because you live in Northern Ireland");
+		wait.implicitwait();
+	}
+
+	@And("close Browser2")
+	public void close_browser2() {
+		driver.close();
+	    
+	}
+	
 
 }

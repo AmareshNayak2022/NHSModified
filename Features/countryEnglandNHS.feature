@@ -1,12 +1,8 @@
 Feature: NHSBSA health treatment check for various combinations for country England
-
- Background: Launch NHSBSA URL in Browser
-    Given User launches browser and enters url
-  
-  
+ 
   Scenario: NHSBSA treatment help check country England(Combination1)
   
-    
+    Given user is on StartPage
     When user clicks on StartNow buttonengland
     And user selects country England clicks Next
     And user selects GPPractice yes clicks Next
@@ -18,5 +14,6 @@ Feature: NHSBSA health treatment check for various combinations for country Engl
     And user selects response and clicks Next
     And user selects less than 935 pond and clicks Next
     Then user lands on NHSBSA help Page
+    And close Browserafter
     
   
